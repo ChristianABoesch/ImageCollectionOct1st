@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      Fancy Frogs
+    </title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <script>
+      var currentSlide = 0;
+      var goPrev = function(){
+        $("img").fadeOut();
+        currentSlide = (currentSlide - 1) % 5;
+        if(currentSlide < 0){
+          currentSlide = 5 + currentSlide;
+        }
+        $("img:nth-of-type(" + (currentSlide+1) + ")").stop().fadeIn(1000);
+        return;
+      }
+
+      var goNext = function(){
+        $("img").fadeOut();
+        currentSlide = (currentSlide + 1) % 5;
+        $("img:nth-of-type(" + (currentSlide+1) + ")").stop().fadeIn(1000);
+        return;
+      }
+      function play() {
+        var audio = new Audio('music/Chamber Soda.m4a');
+        audio.play();
+      }
+     </script>
+     <style>
+      img{
+        position: absolute;
+      }
+      #prev{
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+      }
+      #next{
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+      }
+     </style>
+  </head>
+
+  <button onclick="play()">Motivation-enhancing music</button>
+
+  <h1>The most motivational posters I could find.</h1>
+
+  <body onload='$("img").fadeOut(0);$("img:nth-of-type(1)").fadeIn()'>
+  <img src='images/a-photograph-of-a-small-motivational-poster-that-reads-be-the-do-do-the-be-123185662.png'>
+  <img src='images/a-photograph-of-a-motivational-poster-with-terrible-advice-on-it-166015353.png'>
+  <img src='images/a-photograph-of-a-motivational-poster-with-a-random-assortment-of-letters-on-it-350550684.png'>
+  <img src='images/a-photograph-of-a-keep-calm-and-carry-on-poster-with-utter-nonsense-on-it-13002624.png'>
+  <img src='images/a-photograph-of-a-motivational-poster-with-no-words-on-it-790490097.png'>
+  <button onclick='goPrev()' id='prev'> Prev </button>
+  <button onclick='goNext()' id='next'> Next </button>
+
+  </body>
+</html>
